@@ -1,0 +1,55 @@
+# ShipIt Client Configuration
+# This is a template configuration file. Copy this to your config location
+# and update the values according to your setup.
+
+server:
+  # Your ShipIt server domain
+  domain: "your-shipit-server.com"
+  # API port (usually 443 for HTTPS)
+  api_port: 443
+  # Data plane port (usually 7223 for TLS)
+  data_plane_port: 7223
+  # Whether to verify TLS certificates
+  tls_verify: true
+
+auth:
+  # Your API key (get this from your ShipIt server)
+  # Format: shipit_<32_random_characters>
+  api_key: "shipit_abc123def456ghi789jkl012mno345pqr678stu901vwx234yz"
+  # Whether to automatically refresh tokens
+  auto_refresh: true
+
+tunnels:
+  # Web application tunnel
+  - name: "web-app"
+    protocol: "http"
+    local_port: 3000
+    subdomain: "myapp"
+    auto_start: true
+  
+  # Database tunnel (optional)
+  - name: "database"
+    protocol: "tcp"
+    local_port: 5432
+    subdomain: ""
+    auto_start: false
+
+connection:
+  # Number of connections in the pool
+  pool_size: 10
+  # Heartbeat interval (how often to send keepalive)
+  heartbeat_interval: 30s
+  # Reconnection interval (how often to retry failed connections)
+  reconnect_interval: 5s
+  # Maximum number of reconnection attempts
+  max_reconnect_attempts: 10
+  # Connection timeout
+  connection_timeout: 30s
+
+logging:
+  # Log level: debug, info, warn, error
+  level: "info"
+  # Log format: json, text
+  format: "json"
+  # Log file path (leave empty for stdout only)
+  file: "" 
